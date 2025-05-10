@@ -1,14 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { deleteKnowledgeItem, markAsReviewed } from '@/lib/knowledge';
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
-
 // DELETE: 删除知识点
-export async function DELETE(request: Request, { params }: Params) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
     
@@ -31,7 +28,10 @@ export async function DELETE(request: Request, { params }: Params) {
 }
 
 // PATCH: 标记知识点已复习
-export async function PATCH(request: Request, { params }: Params) {
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id } = params;
     
