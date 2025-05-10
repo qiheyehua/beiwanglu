@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .knowledge-item {
+    @apply p-4 border rounded-lg mb-3 bg-white shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+
+  .input {
+    @apply border rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+}
