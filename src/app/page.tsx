@@ -269,7 +269,7 @@ export default function Home() {
                   onClick={() => deleteItem(item.id)}
                   variant="destructive"
                   size="sm"
-                >
+          >
                   删除
                 </Button>
               </div>
