@@ -1,16 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { deleteKnowledgeItem, markAsReviewed } from '@/lib/knowledge';
 
-export interface Context {
-  params: {
-    id: string;
-  };
-}
-
 // DELETE: 删除知识点
 export async function DELETE(
   request: NextRequest,
-  { params }: Context
+  { params }: { params: { id: string } }
 ) {
   try {
     const id = params.id;
@@ -36,7 +30,7 @@ export async function DELETE(
 // PATCH: 标记知识点已复习
 export async function PATCH(
   request: NextRequest,
-  { params }: Context
+  { params }: { params: { id: string } }
 ) {
   try {
     const id = params.id;
