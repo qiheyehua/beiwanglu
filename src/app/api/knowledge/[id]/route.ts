@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { deleteKnowledgeItem, markAsReviewed } from '@/lib/knowledge';
 
 // DELETE: 删除知识点
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest) {
   try {
-    const id = params.id;
+    // 从URL中获取ID
+    const url = request.nextUrl.pathname;
+    const id = url.split('/').pop();
     
     if (!id) {
       return NextResponse.json(
@@ -28,12 +27,11 @@ export async function DELETE(
 }
 
 // PATCH: 标记知识点已复习
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest) {
   try {
-    const id = params.id;
+    // 从URL中获取ID
+    const url = request.nextUrl.pathname;
+    const id = url.split('/').pop();
     
     if (!id) {
       return NextResponse.json(
