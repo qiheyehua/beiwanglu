@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { deleteKnowledgeItem, markAsReviewed } from '@/lib/knowledge';
 
+type RouteParams = {
+  params: {
+    id: string
+  }
+}
+
 // DELETE: 删除知识点
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteParams
 ) {
   try {
-    const id = params.id;
+    const id = context.params.id;
     
     if (!id) {
       return NextResponse.json(
@@ -30,10 +36,10 @@ export async function DELETE(
 // PATCH: 标记知识点已复习
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteParams
 ) {
   try {
-    const id = params.id;
+    const id = context.params.id;
     
     if (!id) {
       return NextResponse.json(
